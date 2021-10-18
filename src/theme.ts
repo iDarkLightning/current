@@ -19,6 +19,7 @@ const theme = extendTheme({
       800: "#151A21",
       900: "#0B0E11",
     },
+    accent: "#3EB78C",
     darkText: "#DEE3EA",
   },
   config,

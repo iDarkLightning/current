@@ -36,8 +36,8 @@ const PostPage: NextPage<PostProps> = ({ post }) => {
             />
             <Text mr="1vh">{post.user.name}</Text>
             <Text color={subTextColor} fontSize="16px">
-              {post.createdAt} · About {Math.floor(post.text.length / 1500)}m
-              read
+              {post.createdAt} · About{" "}
+              {Math.floor(post.text.length / 1500) || 1}m read
             </Text>
           </Flex>
         </Box>

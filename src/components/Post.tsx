@@ -36,7 +36,8 @@ const Post: React.FC<PostProps> = ({ post }) => {
       </Link>
       <Text whiteSpace="pre-line">{post.text.substring(0, 150)}...</Text>
       <Text color={subTextColor} fontSize="16px">
-        {post.createdAt} · About {Math.floor(post.text.length / 1500)}m read
+        {post.createdAt} · About {Math.floor(post.text.length / 1500) || 1}m
+        read
       </Text>
     </Box>
   );
