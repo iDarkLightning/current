@@ -1,5 +1,5 @@
 import { Flex } from "@chakra-ui/layout";
-import { Avatar, Input } from "@chakra-ui/react";
+import { Avatar, Input, useColorModeValue } from "@chakra-ui/react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/dist/client/router";
 import React from "react";
@@ -8,6 +8,8 @@ interface CreatePostProps {}
 
 const CreatePost: React.FC<CreatePostProps> = ({}) => {
   const { data: session } = useSession();
+  const bgColor = useColorModeValue("gray.100", "dark.800");
+  const inputColor = useColorModeValue("gray.200", "dark.700");
   const router = useRouter();
 
   return (
@@ -16,7 +18,7 @@ const CreatePost: React.FC<CreatePostProps> = ({}) => {
       m="auto"
       justifyContent="space-evenly"
       alignItems="center"
-      bgColor="gray.100"
+      bgColor={bgColor}
       p="1vh 1vh 1vh 1vh"
       borderRadius="10px"
     >
@@ -26,7 +28,7 @@ const CreatePost: React.FC<CreatePostProps> = ({}) => {
         width="60%"
         variant="filled"
         placeholder="Create Post..."
-        bgColor="gray.200"
+        bgColor={inputColor}
       />
     </Flex>
   );

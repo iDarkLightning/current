@@ -1,33 +1,17 @@
-import { Post, PrismaClient, User } from ".prisma/client";
-import {
-  Avatar,
-  Box,
-  Flex,
-  Heading,
-  Link,
-  Stack,
-  Text,
-} from "@chakra-ui/react";
+import { PrismaClient } from ".prisma/client";
+import { Box, Stack } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { useSession } from "next-auth/react";
 import React from "react";
 import CreatePost from "../components/CreatePost";
-import Nav from "../components/Nav";
-import NextLink from "next/link";
 import Layout from "../components/Layout";
+import Post from "../components/Post";
+import { FormattedPost } from "../types/FormattedPost";
 
 const prisma = new PrismaClient();
 
 interface IIndexProps {
-  posts: {
-    updatedAt: string;
-    createdAt: string;
-    id: string;
-    title: string;
-    text: string;
-    userId: string;
-    user: User;
-  }[];
+  posts: FormattedPost[];
 }
 
 const Index: NextPage<IIndexProps> = ({ posts }) => {
@@ -36,35 +20,9 @@ const Index: NextPage<IIndexProps> = ({ posts }) => {
   return (
     <Layout>
       <Box mb="2vh">{session && <CreatePost />}</Box>
-      <Stack m="auto" w="800px">
+      <Stack m="auto" w="800px" mb="2vh">
         {posts.map((post) => (
-          <Box
-            key={post.id}
-            bgColor="gray.100"
-            borderRadius="10px"
-            p="5vh 5vh 5vh 5vh"
-            as={Stack}
-          >
-            <Flex alignItems="center" justifyContent="flex-start">
-              <Avatar
-                name={post.user.name}
-                src={post.user.image}
-                size="sm"
-                mr="1vh"
-              />
-              <Text color="gray.700">{post.user.name}</Text>
-            </Flex>
-            <Link>
-              <NextLink href={`/posts/${post.id}`}>
-                <Heading>{post.title}</Heading>
-              </NextLink>
-            </Link>
-            <Text whiteSpace="pre-line">{post.text.substring(0, 150)}...</Text>
-            <Text color="gray.700" fontSize="16px">
-              {post.createdAt} · About {Math.floor(post.text.length / 1500)}m
-              read
-            </Text>
-          </Box>
+          <Post post={post} key={post.id} />
         ))}
       </Stack>
     </Layout>

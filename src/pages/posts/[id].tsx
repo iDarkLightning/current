@@ -7,11 +7,11 @@ import {
   Heading,
   Stack,
   Text,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { GetServerSideProps, NextPage } from "next";
 import React from "react";
 import Layout from "../../components/Layout";
-import Nav from "../../components/Nav";
 
 const prisma = new PrismaClient();
 
@@ -20,9 +20,11 @@ interface PostProps {
 }
 
 const PostPage: NextPage<PostProps> = ({ post }) => {
+  const subTextColor = useColorModeValue("gray.700", "dark.200");
+
   return (
     <Layout>
-      <Box w="800px" m="auto" as={Stack}>
+      <Box w="800px" m="auto" as={Stack} h="100%">
         <Box as={Stack} m="2vh 0 2vh 0">
           <Heading>{post.title}</Heading>
           <Flex alignItems="center" justifyContent="flex-start">
@@ -33,14 +35,16 @@ const PostPage: NextPage<PostProps> = ({ post }) => {
               mr="1vh"
             />
             <Text mr="1vh">{post.user.name}</Text>
-            <Text color="gray.700" fontSize="16px">
+            <Text color={subTextColor} fontSize="16px">
               {post.createdAt} · About {Math.floor(post.text.length / 1500)}m
               read
             </Text>
           </Flex>
         </Box>
         <Divider />
-        <Text whiteSpace="pre-line">{post.text}</Text>
+        <Text whiteSpace="pre-line" pb="2vh">
+          {post.text}
+        </Text>
       </Box>
     </Layout>
   );

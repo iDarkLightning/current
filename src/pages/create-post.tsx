@@ -7,6 +7,7 @@ import {
   Input,
   Stack,
   Textarea,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { NextPage } from "next";
@@ -18,16 +19,17 @@ import Layout from "../components/Layout";
 
 const CreatePost: NextPage = () => {
   const router = useRouter();
+  const bgColor = useColorModeValue("gray.100", "dark.800");
+  const inputColor = useColorModeValue("gray.200", "dark.700");
   const [bodyValue, setBodyValue] = useState("");
   const [titleValue, setTitleValue] = useState("");
 
   const createPost = async () => {
-    const res = await axios.post("api/create-post", {
+    await axios.post("api/create-post", {
       title: titleValue,
       body: bodyValue,
     });
 
-    console.log(res.data);
     router.push("/");
   };
 
@@ -37,13 +39,13 @@ const CreatePost: NextPage = () => {
         <Flex
           flexDirection="column"
           alignItems="center"
-          bgColor="gray.100"
+          bgColor={bgColor}
           p="1vh 1vh 1vh 1vh"
           borderRadius="10px"
         >
           <Stack w="100%" mb="2vh">
             <Input
-              bgColor="gray.200"
+              bgColor={inputColor}
               variant="filled"
               placeholder="Title"
               color="black"
@@ -52,7 +54,7 @@ const CreatePost: NextPage = () => {
             <Textarea
               placeholder="Body"
               onChange={(e) => setBodyValue(e.target.value)}
-              bgColor="gray.200"
+              bgColor={inputColor}
               variant="filled"
               mb="1vh"
               resize="vertical"
