@@ -35,7 +35,7 @@ const Nav: React.FC<NavProps> = ({}) => {
           <Avatar name={session.user.name} src={session.user.image} />
         )}
         <Button
-          onClick={() => (!session ? signIn("google") : signOut())}
+          onClick={() => (!session ? signIn() : signOut())}
           bgColor="teal"
           color="gray.100"
           _hover={{ bgColor: "teal.700" }}
