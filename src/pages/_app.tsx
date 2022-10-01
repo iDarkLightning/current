@@ -1,19 +1,15 @@
-import { ColorModeProvider, CSSReset, ThemeProvider } from "@chakra-ui/react";
+import { ChakraProvider, ColorModeProvider } from "@chakra-ui/react";
 import { SessionProvider } from "next-auth/react";
 import { AppProps } from "next/dist/shared/lib/router/router";
-import React from "react";
 import theme from "../theme";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <ThemeProvider theme={theme}>
-      <CSSReset />
+    <ChakraProvider theme={theme} resetCSS>
       <SessionProvider>
-        <ColorModeProvider options={theme.config}>
-          <Component {...pageProps} />
-        </ColorModeProvider>
+        <Component {...pageProps} />
       </SessionProvider>
-    </ThemeProvider>
+    </ChakraProvider>
   );
 };
 

@@ -35,7 +35,7 @@ const CreatePost: NextPage = () => {
 
   return (
     <Layout>
-      <Stack width="800px" m="auto" mt="2vh" spacing="2vh">
+      <Stack width="800px" m="auto" mt="2vh">
         <Flex
           flexDirection="column"
           alignItems="center"

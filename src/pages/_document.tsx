@@ -6,7 +6,7 @@ const Document = () => (
   <Html lang="en">
     <Head />
     <body>
-      <ColorModeScript initialColorMode="light" />
+      <ColorModeScript initialColorMode={theme.config.initialColorMode} />
       <Main />
       <NextScript />
     </body>
