@@ -7,8 +7,6 @@ import Layout from "../components/Layout";
 import Post from "../components/Post";
 import { FormattedPost } from "../types/FormattedPost";
 
-const prisma = new PrismaClient();
-
 interface IIndexProps {
   posts: FormattedPost[];
 }
