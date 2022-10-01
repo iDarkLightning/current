@@ -1,7 +1,6 @@
 import { MoonIcon, SunIcon } from "@chakra-ui/icons";
 import {
   Avatar,
-  Box,
   Button,
   Flex,
   Heading,
@@ -12,11 +11,9 @@ import {
 } from "@chakra-ui/react";
 import { signIn, signOut, useSession } from "next-auth/react";
 import NextLink from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 
-interface NavProps {}
-
-const Nav: React.FC<NavProps> = ({}) => {
+const Nav: React.FC = () => {
   const { data: session } = useSession();
   const { toggleColorMode } = useColorMode();
   const showMoon = useColorModeValue(true, false);
