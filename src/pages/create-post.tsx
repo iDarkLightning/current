@@ -1,26 +1,24 @@
+import { PlusSquareIcon } from "@chakra-ui/icons";
 import {
-  Box,
   Button,
-  Divider,
   Flex,
   Heading,
   Input,
   Stack,
   Textarea,
+  Text,
   useColorModeValue,
+  Box,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { NextPage } from "next";
 import { useRouter } from "next/dist/client/router";
-import React, { useState } from "react";
-import Nav from "../components/Nav";
-import ReactMarkdown from "react-markdown";
+import { useState } from "react";
 import Layout from "../components/Layout";
 
 const CreatePost: NextPage = () => {
   const router = useRouter();
   const bgColor = useColorModeValue("gray.100", "dark.800");
-  const inputColor = useColorModeValue("gray.200", "dark.700");
   const [bodyValue, setBodyValue] = useState("");
   const [titleValue, setTitleValue] = useState("");
 
@@ -35,38 +33,36 @@ const CreatePost: NextPage = () => {
 
   return (
     <Layout>
-      <Stack width="800px" m="auto" mt="2vh">
-        <Flex
-          flexDirection="column"
-          alignItems="center"
-          bgColor={bgColor}
-          p="1vh 1vh 1vh 1vh"
-          borderRadius="10px"
-        >
-          <Stack w="100%" mb="2vh">
-            <Input
-              bgColor={inputColor}
-              variant="filled"
-              placeholder="Title"
-              color="black"
-              onChange={(e) => setTitleValue(e.target.value)}
-            />
-            <Textarea
-              placeholder="Body"
-              onChange={(e) => setBodyValue(e.target.value)}
-              bgColor={inputColor}
-              variant="filled"
-              mb="1vh"
-              resize="vertical"
-              h="60vh"
-            />
-          </Stack>
-          <Flex justifyContent="flex-end" w="100%">
-            <Button bgColor="teal" color="gray.100" onClick={createPost}>
-              Create Post
-            </Button>
-          </Flex>
+      <Stack spacing="1.25rem" maxW="80rem" mx="auto">
+        <Flex alignItems="center" justifyContent="space-between">
+          <Box>
+            <Heading fontWeight="medium" fontSize="1.5rem">
+              Create a New Post
+            </Heading>
+            <Text opacity="80%">Share what's on your mind!</Text>
+          </Box>
+          <Button
+            onClick={createPost}
+            colorScheme="purple"
+            leftIcon={<PlusSquareIcon />}
+          >
+            Create Post
+          </Button>
         </Flex>
+        <Stack w="100%" mb="2vh">
+          <Input
+            variant="filled"
+            placeholder="Title"
+            onChange={(e) => setTitleValue(e.target.value)}
+          />
+          <Textarea
+            placeholder="Body"
+            onChange={(e) => setBodyValue(e.target.value)}
+            variant="filled"
+            resize="vertical"
+            minH="40vh"
+          />
+        </Stack>
       </Stack>
     </Layout>
   );

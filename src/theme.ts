@@ -23,20 +23,12 @@ const theme = extendTheme({
     accent: "#3EB78C",
     darkText: "#DEE3EA",
   },
-  // styles: {
-  //   global: (props) => ({
-  //     body: {
-  //       backgroundColor: mode("white", "dark.900")(props),
-  //       color: mode("black", "white")(props),
-  //     },
-  //   }),
-  // },
   styles: {
     global: (props) => {
       return {
         body: {
           backgroundColor: mode("white", "dark.900")(props),
-          color: mode("darkText", "white")(props),
+          color: mode("black", "white")(props),
         },
       };
     },
