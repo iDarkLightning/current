@@ -11,11 +11,15 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 import { NextPage } from "next";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/dist/client/router";
 import { useState } from "react";
 import Layout from "../components/Layout";
 
 const CreatePost: NextPage = () => {
+  useSession({
+    required: true,
+  });
   const router = useRouter();
   const [bodyValue, setBodyValue] = useState("");
   const [titleValue, setTitleValue] = useState("");
