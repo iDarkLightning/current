@@ -30,6 +30,8 @@ const Index: NextPage<IIndexProps> = ({ posts }) => {
 };
 
 export const getServerSideProps = async () => {
+  console.log("TESTTEST");
+
   const posts = (await prisma.post.findMany({ include: { user: true } }))
     .map((post) => ({
       ...post,
