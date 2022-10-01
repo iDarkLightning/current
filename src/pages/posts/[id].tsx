@@ -10,6 +10,7 @@ import {
   useColorModeValue,
 } from "@chakra-ui/react";
 import { GetServerSideProps, NextPage } from "next";
+import Head from "next/head";
 import React from "react";
 import Layout from "../../components/Layout";
 
@@ -20,28 +21,35 @@ interface PostProps {
 }
 
 const PostPage: NextPage<PostProps> = ({ post }) => {
-  const subTextColor = useColorModeValue("gray.700", "dark.200");
-
   return (
-    <Layout>
-      <Stack spacing="1rem">
-        <Heading fontWeight="medium" fontSize="2rem">
-          {post.title}
-        </Heading>
-        <Flex alignItems="center" justifyContent="flex-start" gap="0.75rem">
-          <Avatar name={post.user.name} src={post.user.image} size="sm" />
-          <Text>{post.user.name}</Text>
-          <Text opacity="80%">
-            {post.createdAt} · About {Math.floor(post.text.length / 1500) || 1}m
-            read
-          </Text>
-        </Flex>
-      </Stack>
-      <Divider />
-      <Text whiteSpace="pre-line" pb="2vh">
-        {post.text}
-      </Text>
-    </Layout>
+    <>
+      <Head>
+        <meta property="og:title" content={post.title} />
+        <meta
+          property="og:description"
+          content={post.text.substring(0, 50) + "..."}
+        />
+      </Head>
+      <Layout>
+        <Stack spacing="1rem">
+          <Heading fontWeight="medium" fontSize="2rem">
+            {post.title}
+          </Heading>
+          <Flex alignItems="center" justifyContent="flex-start" gap="0.75rem">
+            <Avatar name={post.user.name} src={post.user.image} size="sm" />
+            <Text>{post.user.name}</Text>
+            <Text opacity="80%">
+              {post.createdAt} · About{" "}
+              {Math.floor(post.text.length / 1500) || 1}m read
+            </Text>
+          </Flex>
+        </Stack>
+        <Divider />
+        <Text whiteSpace="pre-line" pb="2vh">
+          {post.text}
+        </Text>
+      </Layout>
+    </>
   );
 };
 

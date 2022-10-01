@@ -10,6 +10,14 @@ const Layout: React.FC<Props> = ({ children }) => {
     <>
       <Head>
         <title>Current</title>
+        <meta property="og:title" content="Current" />
+        <meta property="og:site_name" content="Current" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://current.nirnath.tech" />
+        <meta
+          property="og:description"
+          content="A blog made as a demo for TechCodes' intermediate class"
+        />
       </Head>
       <Box position="sticky" top={0} zIndex={1} pb="2vh" overflow="hidden">
         <Nav />

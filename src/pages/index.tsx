@@ -1,7 +1,6 @@
+import { Flex, Heading } from "@chakra-ui/react";
 import { PrismaClient } from "@prisma/client";
-import { Flex, Heading, Stack } from "@chakra-ui/react";
 import { NextPage } from "next";
-import { useSession } from "next-auth/react";
 import CreatePost from "../components/CreatePost";
 import Layout from "../components/Layout";
 import Post from "../components/Post";
