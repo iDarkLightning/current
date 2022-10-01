@@ -21,10 +21,16 @@ const Nav: React.FC<NavProps> = ({}) => {
   const { toggleColorMode } = useColorMode();
   const showMoon = useColorModeValue(true, false);
   const bgColor = useColorModeValue("gray.100", "dark.800");
-  const textColor = useColorModeValue("black", "darkText");
+  const borderColor = useColorModeValue("gray.200", "dark.700");
 
   return (
-    <Flex py="1.5rem" px="4rem" bgColor={bgColor}>
+    <Flex
+      py="1.5rem"
+      bgColor={bgColor}
+      shadow="sm"
+      borderBottom="2px solid"
+      borderBottomColor={borderColor}
+    >
       <Flex
         justifyContent="space-between"
         maxW="80rem"
@@ -33,26 +39,30 @@ const Nav: React.FC<NavProps> = ({}) => {
         px="2rem"
       >
         <NextLink href="/">
-          <Heading _hover={{ cursor: "pointer" }} color={textColor}>
-            Current
-          </Heading>
+          <Heading _hover={{ cursor: "pointer" }}>Current</Heading>
         </NextLink>
         <HStack>
-          {session && (
-            <Avatar name={session.user.name} src={session.user.image} />
-          )}
-          <Button
-            onClick={() => (!session ? signIn() : signOut())}
-            colorScheme="purple"
-          >
-            {session ? "Sign Out" : "Sign In"}
-          </Button>
           <IconButton
             aria-label="toggle-colour-mode"
             onClick={toggleColorMode}
             colorScheme="gray"
+            size="sm"
             icon={showMoon ? <MoonIcon /> : <SunIcon />}
           />
+          <Button
+            onClick={() => (!session ? signIn() : signOut())}
+            colorScheme="gray"
+            size="sm"
+          >
+            {session ? "Sign Out" : "Sign In"}
+          </Button>
+          {session && (
+            <Avatar
+              name={session.user.name}
+              src={session.user.image}
+              size="sm"
+            />
+          )}
         </HStack>
       </Flex>
     </Flex>

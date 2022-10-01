@@ -26,6 +26,9 @@ const theme = extendTheme({
   styles: {
     global: (props) => {
       return {
+        html: {
+          colorScheme: "dark !important",
+        },
         body: {
           backgroundColor: mode("white", "dark.900")(props),
           color: mode("black", "white")(props),

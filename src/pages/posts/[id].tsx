@@ -24,28 +24,23 @@ const PostPage: NextPage<PostProps> = ({ post }) => {
 
   return (
     <Layout>
-      <Box w="800px" m="auto" as={Stack} h="100%">
-        <Box as={Stack} m="2vh 0 2vh 0">
-          <Heading>{post.title}</Heading>
-          <Flex alignItems="center" justifyContent="flex-start">
-            <Avatar
-              name={post.user.name}
-              src={post.user.image}
-              size="sm"
-              mr="1vh"
-            />
-            <Text mr="1vh">{post.user.name}</Text>
-            <Text color={subTextColor} fontSize="16px">
-              {post.createdAt} · About{" "}
-              {Math.floor(post.text.length / 1500) || 1}m read
-            </Text>
-          </Flex>
-        </Box>
-        <Divider />
-        <Text whiteSpace="pre-line" pb="2vh">
-          {post.text}
-        </Text>
-      </Box>
+      <Stack spacing="1rem">
+        <Heading fontWeight="medium" fontSize="2rem">
+          {post.title}
+        </Heading>
+        <Flex alignItems="center" justifyContent="flex-start" gap="0.75rem">
+          <Avatar name={post.user.name} src={post.user.image} size="sm" />
+          <Text>{post.user.name}</Text>
+          <Text opacity="80%">
+            {post.createdAt} · About {Math.floor(post.text.length / 1500) || 1}m
+            read
+          </Text>
+        </Flex>
+      </Stack>
+      <Divider />
+      <Text whiteSpace="pre-line" pb="2vh">
+        {post.text}
+      </Text>
     </Layout>
   );
 };

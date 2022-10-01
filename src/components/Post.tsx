@@ -10,36 +10,29 @@ interface PostProps {
 
 const Post: React.FC<PostProps> = ({ post }) => {
   const bgColor = useColorModeValue("gray.100", "dark.800");
-  const subTextColor = useColorModeValue("gray.700", "dark.200");
 
   return (
-    <Box
-      key={post.id}
-      bgColor={bgColor}
-      borderRadius="10px"
-      p="5vh 5vh 5vh 5vh"
-      as={Stack}
-    >
-      <Flex alignItems="center" justifyContent="flex-start">
-        <Avatar
-          name={post.user.name}
-          src={post.user.image}
-          size="sm"
-          mr="1vh"
-        />
-        <Text color={subTextColor}>{post.user.name}</Text>
-      </Flex>
-      <Link>
-        <NextLink href={`/posts/${post.id}`}>
-          <Heading>{post.title}</Heading>
-        </NextLink>
-      </Link>
-      <Text whiteSpace="pre-line">{post.text.substring(0, 150)}...</Text>
-      <Text color={subTextColor} fontSize="16px">
-        {post.createdAt} · About {Math.floor(post.text.length / 1500) || 1}m
-        read
-      </Text>
-    </Box>
+    <NextLink href={`/posts/${post.id}`}>
+      <Box
+        key={post.id}
+        bgColor={bgColor}
+        borderRadius="0.75rem"
+        p="2rem"
+        as={Stack}
+        cursor="pointer"
+      >
+        <Flex alignItems="center" justifyContent="flex-start" gap="1rem">
+          <Avatar name={post.user.name} src={post.user.image} size="sm" />
+          <Text opacity="80%">{post.user.name}</Text>
+        </Flex>
+        <Heading>{post.title}</Heading>
+        <Text whiteSpace="pre-line">{post.text.substring(0, 150)}...</Text>
+        <Text opacity="80%">
+          {post.createdAt} · About {Math.floor(post.text.length / 1500) || 1}m
+          read
+        </Text>
+      </Box>
+    </NextLink>
   );
 };
 
