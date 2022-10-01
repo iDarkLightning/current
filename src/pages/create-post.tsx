@@ -1,14 +1,13 @@
 import { PlusSquareIcon } from "@chakra-ui/icons";
 import {
+  Box,
   Button,
   Flex,
   Heading,
   Input,
   Stack,
-  Textarea,
   Text,
-  useColorModeValue,
-  Box,
+  Textarea,
 } from "@chakra-ui/react";
 import axios from "axios";
 import { NextPage } from "next";
@@ -18,7 +17,6 @@ import Layout from "../components/Layout";
 
 const CreatePost: NextPage = () => {
   const router = useRouter();
-  const bgColor = useColorModeValue("gray.100", "dark.800");
   const [bodyValue, setBodyValue] = useState("");
   const [titleValue, setTitleValue] = useState("");
 
@@ -33,7 +31,7 @@ const CreatePost: NextPage = () => {
 
   return (
     <Layout>
-      <Stack spacing="1.25rem" maxW="80rem" mx="auto">
+      <Stack spacing="1.25rem" maxW="80rem" mx="auto" w="100%">
         <Flex alignItems="center" justifyContent="space-between">
           <Box>
             <Heading fontWeight="medium" fontSize="1.5rem">

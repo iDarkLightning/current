@@ -24,8 +24,14 @@ const Nav: React.FC<NavProps> = ({}) => {
   const textColor = useColorModeValue("black", "darkText");
 
   return (
-    <Flex py="2vh" px="5vh" bgColor={bgColor}>
-      <Flex justifyContent="space-between" maxW="80rem" w="100%" mx="auto">
+    <Flex py="1.5rem" px="4rem" bgColor={bgColor}>
+      <Flex
+        justifyContent="space-between"
+        maxW="80rem"
+        w="100%"
+        mx="auto"
+        px="2rem"
+      >
         <NextLink href="/">
           <Heading _hover={{ cursor: "pointer" }} color={textColor}>
             Current
@@ -37,15 +43,14 @@ const Nav: React.FC<NavProps> = ({}) => {
           )}
           <Button
             onClick={() => (!session ? signIn() : signOut())}
-            bgColor="teal"
-            color="gray.100"
-            _hover={{ bgColor: "teal.700" }}
+            colorScheme="purple"
           >
             {session ? "Sign Out" : "Sign In"}
           </Button>
           <IconButton
             aria-label="toggle-colour-mode"
             onClick={toggleColorMode}
+            colorScheme="gray"
             icon={showMoon ? <MoonIcon /> : <SunIcon />}
           />
         </HStack>

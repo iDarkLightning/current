@@ -10,9 +10,9 @@ const Layout: React.FC<Props> = ({ children }) => {
       <Box position="sticky" top={0} zIndex={1} pb="2vh" overflow="hidden">
         <Nav />
       </Box>
-      <Box height="100%" overflowY="auto">
+      <Flex flexDir="column" gap="1.5rem" maxW="80rem" mx="auto" px="2rem">
         {children}
-      </Box>
+      </Flex>
     </>
   );
 };
