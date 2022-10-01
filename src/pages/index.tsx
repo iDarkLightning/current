@@ -1,4 +1,4 @@
-import { PrismaClient } from ".prisma/client";
+import { PrismaClient } from "@prisma/client";
 import { Flex, Heading, Stack } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { useSession } from "next-auth/react";
