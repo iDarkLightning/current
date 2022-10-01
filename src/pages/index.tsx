@@ -13,7 +13,7 @@ interface IIndexProps {
   posts: FormattedPost[];
 }
 
-const Index: NextPage<IIndexProps> = ({ posts }) => {
+const Index: NextPage<IIndexProps> = ({}) => {
   return (
     <Layout>
       <Flex alignItems="center" justifyContent="space-between">
@@ -22,31 +22,31 @@ const Index: NextPage<IIndexProps> = ({ posts }) => {
         </Heading>
         <CreatePost />
       </Flex>
-      {posts.map((post) => (
+      {/* {posts.map((post) => (
         <Post post={post} key={post.id} />
-      ))}
+      ))} */}
     </Layout>
   );
 };
 
-export const getServerSideProps = async () => {
-  console.log("TESTTEST");
+// export const getServerSideProps = async () => {
+//   console.log("TESTTEST");
 
-  const posts = (await prisma.post.findMany({ include: { user: true } }))
-    .map((post) => ({
-      ...post,
-      createdAt: post.createdAt.toLocaleDateString(),
-    }))
-    .map((post) => ({
-      ...post,
-      updatedAt: post.updatedAt.toLocaleDateString(),
-    }));
+//   const posts = (await prisma.post.findMany({ include: { user: true } }))
+//     .map((post) => ({
+//       ...post,
+//       createdAt: post.createdAt.toLocaleDateString(),
+//     }))
+//     .map((post) => ({
+//       ...post,
+//       updatedAt: post.updatedAt.toLocaleDateString(),
+//     }));
 
-  return {
-    props: {
-      posts,
-    },
-  };
-};
+//   return {
+//     props: {
+//       posts,
+//     },
+//   };
+// };
 
 export default Index;
